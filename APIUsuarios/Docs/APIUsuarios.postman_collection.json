@@ -111,6 +111,226 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Criar usuário - inválido (400: email inválido)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"AB\",\n  \"email\": \"email-invalido\",\n  \"senha\": \"12345\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/usuarios",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "usuarios"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Deve retornar 400 Bad Request', function () {",
+              "  pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Criar usuário - inválido (400: campos faltando)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"sem.nome@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/usuarios",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "usuarios"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Deve retornar 400 Bad Request', function () {",
+              "  pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Criar usuário - conflito (409: email duplicado)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Outro Usuário\",\n  \"email\": \"joao.silva@example.com\",\n  \"senha\": \"minhaSenha123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/usuarios",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "usuarios"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Execute 'Criar usuário' antes para semear o email duplicado",
+              "pm.test('Deve retornar 409 Conflict', function () {",
+              "  pm.response.to.have.status(409);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Obter usuário inexistente (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/usuarios/{{notFoundUserId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "usuarios",
+            "{{notFoundUserId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Deve retornar 404 Not Found', function () {",
+              "  pm.response.to.have.status(404);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Atualizar usuário inexistente (404)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Inexistente\",\n  \"email\": \"inexistente@example.com\",\n  \"ativo\": false\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/usuarios/{{notFoundUserId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "usuarios",
+            "{{notFoundUserId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Deve retornar 404 Not Found', function () {",
+              "  pm.response.to.have.status(404);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Remover usuário inexistente (404)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/usuarios/{{notFoundUserId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "usuarios",
+            "{{notFoundUserId}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Deve retornar 404 Not Found', function () {",
+              "  pm.response.to.have.status(404);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
     }
   ],
   "variable": [
@@ -125,6 +345,12 @@
       "value": "1",
       "type": "string",
       "description": "ID de usuário para operações de consulta/atualização/remoção."
+    },
+    {
+      "key": "notFoundUserId",
+      "value": "999999",
+      "type": "string",
+      "description": "ID inexistente para testar respostas 404."
     }
   ]
 }
