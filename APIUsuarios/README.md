@@ -165,11 +165,12 @@ APIUsuarios/
 - Índice único para `Email` e validações por Data Annotations.
 - O `SaveChangesAsync` é controlado pelo controlador (ou camada de serviço, caso adicionada).
 
-## Autor
-- Nome: <Seu Nome>
-- RA: <Seu RA>
-- Curso: <Seu Curso>
-
 ## Collection do Postman
 Exporte sua collection de testes como `APIUsuarios.postman_collection.json` e adicione na raiz do repositório.
 ```
+
+## Autor
+- Nome: Abner Bergmüller
+- Disciplina: Desenvolvimento Back End - Turma 5N
+- Curso: Análise e Desenvolvimento de Sistemas, ULBRA
+
