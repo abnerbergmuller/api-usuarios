@@ -170,5 +170,8 @@ APIUsuarios/
 - Disciplina: Desenvolvimento Back End - Turma 5N
 - Curso: Análise e Desenvolvimento de Sistemas, ULBRA
 
+LINK DO VIDEO: https://drive.google.com/file/d/1wTaZTPrNxm_7sB-y7o4a7BKCotc5T588/view?usp=sharing
+
 ## Collection do Postman
 Exporte sua collection de testes como `APIUsuarios.postman_collection.json` e adicione na raiz do repositório.
+
