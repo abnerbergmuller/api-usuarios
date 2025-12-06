@@ -1,12 +1,18 @@
 using APIUsuarios.Application.Interfaces;
+using APIUsuarios.Application.Validators;
 using APIUsuarios.Infrastructure.Persistence;
 using APIUsuarios.Infrastructure.Repositories;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+// FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<UsuarioCreateDtoValidator>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

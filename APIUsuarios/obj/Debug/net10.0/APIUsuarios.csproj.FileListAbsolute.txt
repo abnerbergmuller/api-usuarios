@@ -129,3 +129,8 @@ C:\ADS\APIUsuarios\APIUsuarios\obj\Debug\net10.0\refint\APIUsuarios.dll
 C:\ADS\APIUsuarios\APIUsuarios\obj\Debug\net10.0\APIUsuarios.pdb
 C:\ADS\APIUsuarios\APIUsuarios\obj\Debug\net10.0\APIUsuarios.genruntimeconfig.cache
 C:\ADS\APIUsuarios\APIUsuarios\obj\Debug\net10.0\ref\APIUsuarios.dll
+C:\ADS\APIUsuarios\APIUsuarios\bin\Debug\net10.0\Docs\APIUsuarios.postman_collection.json
+C:\ADS\APIUsuarios\APIUsuarios\bin\Debug\net10.0\FluentValidation.dll
+C:\ADS\APIUsuarios\APIUsuarios\bin\Debug\net10.0\FluentValidation.AspNetCore.dll
+C:\ADS\APIUsuarios\APIUsuarios\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\ADS\APIUsuarios\APIUsuarios\obj\Debug\net10.0\APIUsuarios.sourcelink.json
